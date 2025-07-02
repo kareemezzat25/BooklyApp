@@ -7,6 +7,7 @@ class BestSellerItemListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      physics: NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         return BestSellerItem();
       },

@@ -11,6 +11,7 @@ class AppTheme {
       titleLarge: AppStyles.textBold,
       titleMedium: AppStyles.textSemiBold,
       titleSmall: AppStyles.textsmall,
+      bodyLarge: AppStyles.textBodyBold,
     ),
   );
 }

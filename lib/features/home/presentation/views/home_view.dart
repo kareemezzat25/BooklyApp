@@ -12,14 +12,18 @@ class HomeView extends StatelessWidget {
       appBar: CustomAppBar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CarouselSliderBooks(),
-            SizedBox(height: 20),
-            Text("Best Seller", style: Theme.of(context).textTheme.titleLarge),
-            SizedBox(height: 12),
-            Expanded(child: BestSellerItemListView()),
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(child: CarouselSliderBooks()),
+            SliverToBoxAdapter(child: SizedBox(height: 20)),
+            SliverToBoxAdapter(
+              child: Text(
+                "Best Seller",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+            ),
+            SliverToBoxAdapter(child: SizedBox(height: 12)),
+            SliverFillRemaining(child: BestSellerItemListView()),
           ],
         ),
       ),

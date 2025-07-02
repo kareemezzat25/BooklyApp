@@ -8,7 +8,11 @@ class AppStyles {
     fontWeight: FontWeight.bold,
     color: AppColors.secondary,
   );
-
+  static var textBodyBold = GoogleFonts.aBeeZee(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+    color: AppColors.secondary,
+  );
   static var textSemiBold = GoogleFonts.inter(
     fontSize: 16,
     fontWeight: FontWeight.w500,
