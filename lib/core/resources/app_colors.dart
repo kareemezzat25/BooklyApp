@@ -5,4 +5,5 @@ class AppColors {
   static const Color secondary = Colors.white;
   static const Color textColor = Color(0xff707070);
   static const Color starColor = Color(0xffFFDD4F);
+  static const Color textButtonColor = Color(0xffEF8262);
 }

@@ -1,6 +1,7 @@
 import 'package:bookly_app/core/resources/app_assets.dart';
 import 'package:bookly_app/core/resources/app_colors.dart';
 import 'package:bookly_app/features/home/presentation/views/book_details_view.dart';
+import 'package:bookly_app/features/home/presentation/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -51,21 +52,7 @@ class BestSellerItem extends StatelessWidget {
                       "19.99\$",
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    Row(
-                      children: [
-                        Icon(FontAwesomeIcons.star, color: AppColors.starColor),
-                        SizedBox(width: 6),
-                        Text(
-                          "4.8",
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        SizedBox(width: 6),
-                        Text(
-                          "(2430)",
-                          style: Theme.of(context).textTheme.titleSmall,
-                        ),
-                      ],
-                    ),
+                    BookRating(),
                   ],
                 ),
               ],

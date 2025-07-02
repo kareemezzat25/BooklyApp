@@ -1,4 +1,5 @@
 import 'package:bookly_app/core/resources/app_assets.dart';
+import 'package:bookly_app/features/home/presentation/widgets/book_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -24,10 +25,7 @@ class CarouselSliderBooks extends StatelessWidget {
       items: images.map((i) {
         return Builder(
           builder: (BuildContext context) {
-            return ClipRRect(
-              borderRadius: BorderRadiusGeometry.circular(16),
-              child: Image.asset(i, height: 280, width: 180, fit: BoxFit.fill),
-            );
+            return BookImage(height: 280, width: 180, image: i);
           },
         );
       }).toList(),

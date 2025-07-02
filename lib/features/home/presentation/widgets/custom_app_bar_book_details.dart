@@ -6,10 +6,12 @@ class CustomAppBarBookDetails extends StatelessWidget
   const CustomAppBarBookDetails({super.key});
 
   @override
-  Size get preferredSize => Size.fromHeight(80);
+  Size get preferredSize => Size.fromHeight(60);
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      scrolledUnderElevation: 0,
+      elevation: 0,
       leading: Padding(
         padding: const EdgeInsets.only(left: 16.0),
         child: IconButton(

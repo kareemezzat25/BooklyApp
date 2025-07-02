@@ -8,11 +8,7 @@ class AppStyles {
     fontWeight: FontWeight.bold,
     color: AppColors.secondary,
   );
-  static var textBodyBold = GoogleFonts.aBeeZee(
-    fontSize: 30,
-    fontWeight: FontWeight.bold,
-    color: AppColors.secondary,
-  );
+
   static var textSemiBold = GoogleFonts.inter(
     fontSize: 16,
     fontWeight: FontWeight.w500,
@@ -22,5 +18,16 @@ class AppStyles {
     fontSize: 14,
     fontWeight: FontWeight.w500,
     color: AppColors.textColor,
+  );
+  static var textBodyBold = GoogleFonts.aBeeZee(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+    color: AppColors.secondary,
+  );
+  static var textBodySemiBold = GoogleFonts.lato(
+    fontStyle: FontStyle.italic,
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: Colors.grey,
   );
 }
