@@ -38,6 +38,9 @@ dependencies:
   google_fonts: ^6.2.1
   carousel_slider: ^5.1.1
   font_awesome_flutter: ^10.8.0
+  dartz: ^0.10.1
+  dio: ^5.8.0+1
+  pretty_dio_logger: ^1.4.0
 
 dev_dependencies:
   flutter_test:
