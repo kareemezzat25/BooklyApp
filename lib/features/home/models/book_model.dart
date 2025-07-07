@@ -198,7 +198,6 @@ class SaleInfo {
   ListPrice? listPrice;
   ListPrice? retailPrice;
   String? buyLink;
-  List<Offers>? offers;
 
   SaleInfo({
     this.country,
@@ -207,7 +206,6 @@ class SaleInfo {
     this.listPrice,
     this.retailPrice,
     this.buyLink,
-    this.offers,
   });
 
   SaleInfo.fromJson(Map<String, dynamic> json) {
@@ -221,41 +219,17 @@ class SaleInfo {
         ? new ListPrice.fromJson(json['retailPrice'])
         : null;
     buyLink = json['buyLink'];
-    if (json['offers'] != null) {
-      offers = <Offers>[];
-      json['offers'].forEach((v) {
-        offers!.add(new Offers.fromJson(v));
-      });
-    }
-  }
-}
-
-class Offers {
-  int? finskyOfferType;
-  ListPrice? listPrice;
-  ListPrice? retailPrice;
-
-  Offers({this.finskyOfferType, this.listPrice, this.retailPrice});
-
-  Offers.fromJson(Map<String, dynamic> json) {
-    finskyOfferType = json['finskyOfferType'];
-    listPrice = json['listPrice'] != null
-        ? new ListPrice.fromJson(json['listPrice'])
-        : null;
-    retailPrice = json['retailPrice'] != null
-        ? new ListPrice.fromJson(json['retailPrice'])
-        : null;
   }
 }
 
 class ListPrice {
-  int? amountInMicros;
+  double? amount;
   String? currencyCode;
 
-  ListPrice({this.amountInMicros, this.currencyCode});
+  ListPrice({this.amount, this.currencyCode});
 
   ListPrice.fromJson(Map<String, dynamic> json) {
-    amountInMicros = json['amountInMicros'];
+    amount = json['amount'];
     currencyCode = json['currencyCode'];
   }
 }

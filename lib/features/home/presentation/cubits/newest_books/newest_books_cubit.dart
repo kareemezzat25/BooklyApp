@@ -1,13 +1,13 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:bookly_app/features/home/data/home_repo.dart';
-import 'package:bookly_app/features/home/models/book_model.dart';
 import 'package:bookly_app/features/home/presentation/cubits/newest_books/newest_books_states.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
 class NewestBookCubit extends Cubit<NewestBookStates> {
   HomeRepo homeRepo;
-  BookModel? book;
   NewestBookCubit({required this.homeRepo}) : super(NewestBookInitialState());
   fetchNewestBooks() async {
     emit(NewestBookLoadingState());
@@ -15,11 +15,12 @@ class NewestBookCubit extends Cubit<NewestBookStates> {
 
     result.fold(
       (failure) {
+        log("Error ${failure.message}");
         emit(NewestBookFailureState(errMessage: failure.message));
       },
       (book) {
-        book = book;
-        emit(NewestBookSuccessState());
+        log("Success");
+        emit(NewestBookSuccessState(bookModel: book));
       },
     );
   }

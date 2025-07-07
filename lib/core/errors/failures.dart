@@ -29,7 +29,6 @@ class ServerFailure extends Failures {
       case DioErrorType.connectionError:
         return ServerFailure("Connection error occurred.");
       case DioErrorType.unknown:
-      default:
         return ServerFailure("An unknown error occurred.");
     }
   }

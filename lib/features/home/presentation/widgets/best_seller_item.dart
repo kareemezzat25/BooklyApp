@@ -1,13 +1,21 @@
-import 'package:bookly_app/core/resources/app_assets.dart';
-import 'package:bookly_app/core/resources/app_colors.dart';
+import 'package:bookly_app/features/home/models/book_rating_model.dart';
+import 'package:bookly_app/features/home/models/newest_book_model.dart';
+import 'package:bookly_app/features/home/models/price_book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/book_details_view.dart';
 import 'package:bookly_app/features/home/presentation/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
+  final NewestBookModel? book;
+  final BookRatingModel? bookRating;
+  final PriceBookModel? bookPrice;
+  const BestSellerItem({
+    super.key,
+    required this.book,
+    this.bookRating,
+    this.bookPrice,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +27,8 @@ class BestSellerItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadiusGeometry.circular(12),
-            child: Image.asset(
-              AppAssets.testImage3,
+            child: Image.network(
+              book?.image ?? "",
               width: 80,
               height: 120,
               fit: BoxFit.fill,
@@ -32,7 +40,7 @@ class BestSellerItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "The Last Memory A world forgetting its past",
+                  book?.title ?? "",
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(
@@ -41,7 +49,7 @@ class BestSellerItem extends StatelessWidget {
                 ),
                 SizedBox(height: 3),
                 Text(
-                  "Ekaterina Pavlova",
+                  book?.author ?? "",
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
                 SizedBox(height: 3),
@@ -49,10 +57,10 @@ class BestSellerItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "19.99\$",
+                      "${bookPrice == null || bookPrice!.amount == 0 ? "Free" : "${bookPrice?.amount ?? 0} ${bookPrice!.currencyCode}"}",
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    BookRating(),
+                    BookRating(bookRating: bookRating!),
                   ],
                 ),
               ],

@@ -1,4 +1,3 @@
-import 'package:bookly_app/core/resources/app_assets.dart';
 import 'package:bookly_app/core/widgets/custom_failure_widget.dart';
 import 'package:bookly_app/core/widgets/custom_loading_widget.dart';
 import 'package:bookly_app/features/home/presentation/cubits/feature_books/feature_books_cubit.dart';
@@ -9,13 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CarouselSliderBooks extends StatelessWidget {
-  CarouselSliderBooks({super.key});
-  final List<String> images = [
-    AppAssets.testImage,
-    AppAssets.testImage2,
-    AppAssets.testImage3,
-    AppAssets.testImage4,
-  ];
+  const CarouselSliderBooks({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FeatureBooksCubit, FeatureBooksStates>(

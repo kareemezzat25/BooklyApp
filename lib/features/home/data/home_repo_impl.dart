@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bookly_app/core/api/api_manager.dart';
 import 'package:bookly_app/core/errors/failures.dart';
 import 'package:bookly_app/features/home/data/home_repo.dart';
@@ -17,11 +15,7 @@ class HomeRepoImpl extends HomeRepo {
     try {
       var result = await apiManager.getData(
         "/volumes",
-        query: {
-          "q": "programming",
-          "sorting": "newest",
-          "Filtering": "free-ebooks",
-        },
+        query: {"q": "programming", "sorting": "newest"},
       );
       BookModel book = BookModel.fromJson(result.data);
       return Right(book);

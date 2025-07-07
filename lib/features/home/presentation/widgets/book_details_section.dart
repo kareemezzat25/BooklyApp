@@ -20,7 +20,7 @@ class BookDetailsSection extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         SizedBox(height: 18),
-        Center(child: BookRating()),
+        // Center(child: BookRating()),
         SizedBox(height: 36),
         BookDetailsButtons(),
       ],

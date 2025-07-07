@@ -1,3 +1,5 @@
+import 'package:bookly_app/features/home/models/book_model.dart';
+
 abstract class NewestBookStates {}
 
 class NewestBookInitialState extends NewestBookStates {}
@@ -9,4 +11,7 @@ class NewestBookFailureState extends NewestBookStates {
   NewestBookFailureState({required this.errMessage});
 }
 
-class NewestBookSuccessState extends NewestBookStates {}
+class NewestBookSuccessState extends NewestBookStates {
+  BookModel? bookModel;
+  NewestBookSuccessState({required this.bookModel});
+}
