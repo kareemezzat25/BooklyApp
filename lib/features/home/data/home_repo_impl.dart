@@ -1,10 +1,14 @@
+import 'dart:developer';
+
 import 'package:bookly_app/core/api/api_manager.dart';
 import 'package:bookly_app/core/errors/failures.dart';
 import 'package:bookly_app/features/home/data/home_repo.dart';
 import 'package:bookly_app/features/home/models/book_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable(as: HomeRepo)
 class HomeRepoImpl extends HomeRepo {
   ApiManager apiManager;
   HomeRepoImpl({required this.apiManager});

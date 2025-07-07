@@ -1,7 +1,9 @@
 import 'package:bookly_app/core/resources/app_constants.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+@lazySingleton
 class ApiManager {
   late Dio _dio;
 

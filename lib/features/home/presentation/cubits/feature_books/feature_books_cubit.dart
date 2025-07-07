@@ -1,11 +1,14 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:bookly_app/features/home/data/home_repo.dart';
 import 'package:bookly_app/features/home/models/book_model.dart';
 import 'package:bookly_app/features/home/presentation/cubits/feature_books/feature_books_states.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class FeatureBooksCubit extends Cubit<FeatureBooksStates> {
   HomeRepo homeRepo;
-  BookModel? bookModel;
   FeatureBooksCubit({required this.homeRepo})
     : super(FeatureBooksInitialState());
 
@@ -15,11 +18,12 @@ class FeatureBooksCubit extends Cubit<FeatureBooksStates> {
 
     result.fold(
       (failure) {
+        log("Error ${failure.message}");
         emit(FeatureBookFailureState(errMessage: failure.message));
       },
       (book) {
-        bookModel = book;
-        emit(FeatureBookSuccessState());
+        log("Success");
+        emit(FeatureBookSuccessState(bookModel: book));
       },
     );
   }

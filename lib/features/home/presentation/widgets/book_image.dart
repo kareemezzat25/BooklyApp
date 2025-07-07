@@ -14,7 +14,12 @@ class BookImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadiusGeometry.circular(16),
-      child: Image.asset(image, width: width, height: height, fit: BoxFit.fill),
+      child: Image.network(
+        image,
+        width: width,
+        height: height,
+        fit: BoxFit.fill,
+      ),
     );
   }
 }
