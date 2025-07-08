@@ -18,7 +18,7 @@ class HomeView extends StatelessWidget {
             SliverToBoxAdapter(child: SizedBox(height: 20)),
             SliverToBoxAdapter(
               child: Text(
-                "Best Seller",
+                "Newest",
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ),

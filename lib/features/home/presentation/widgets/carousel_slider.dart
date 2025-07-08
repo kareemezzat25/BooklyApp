@@ -20,7 +20,7 @@ class CarouselSliderBooks extends StatelessWidget {
           return state.bookModel?.totalItems != 0
               ? CarouselSlider(
                   options: CarouselOptions(
-                    height: 280.0,
+                    height: 260.0,
                     autoPlay: true,
                     viewportFraction: 0.48,
                     enlargeCenterPage: true,
@@ -31,7 +31,7 @@ class CarouselSliderBooks extends StatelessWidget {
                     return Builder(
                       builder: (BuildContext context) {
                         return BookImage(
-                          height: 280,
+                          height: 260,
                           width: 180,
                           image: item.volumeInfo?.imageLinks?.thumbnail ?? "",
                         );

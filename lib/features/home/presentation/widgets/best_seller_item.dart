@@ -2,6 +2,7 @@ import 'package:bookly_app/features/home/models/book_rating_model.dart';
 import 'package:bookly_app/features/home/models/newest_book_model.dart';
 import 'package:bookly_app/features/home/models/price_book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/book_details_view.dart';
+import 'package:bookly_app/features/home/presentation/widgets/book_image.dart';
 import 'package:bookly_app/features/home/presentation/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,15 +26,7 @@ class BestSellerItem extends StatelessWidget {
       },
       child: Row(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadiusGeometry.circular(12),
-            child: Image.network(
-              book?.image ?? "",
-              width: 80,
-              height: 120,
-              fit: BoxFit.fill,
-            ),
-          ),
+          BookImage(height: 120, width: 85, image: book?.image ?? ""),
           SizedBox(width: 30),
           Expanded(
             child: Column(
@@ -57,7 +50,9 @@ class BestSellerItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "${bookPrice == null || bookPrice!.amount == 0 ? "Free" : "${bookPrice?.amount ?? 0} ${bookPrice!.currencyCode}"}",
+                      bookPrice == null || bookPrice!.amount == 0
+                          ? "Free"
+                          : "${bookPrice?.amount ?? 0} ${bookPrice!.currencyCode}",
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     BookRating(bookRating: bookRating!),
