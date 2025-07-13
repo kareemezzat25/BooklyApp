@@ -19,6 +19,8 @@ import 'features/home/presentation/cubits/feature_books/feature_books_cubit.dart
     as _i834;
 import 'features/home/presentation/cubits/newest_books/newest_books_cubit.dart'
     as _i736;
+import 'features/home/presentation/cubits/similar_books/similar_books_cubit.dart'
+    as _i231;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -36,6 +38,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i736.NewestBookCubit>(
       () => _i736.NewestBookCubit(homeRepo: gh<_i739.HomeRepo>()),
+    );
+    gh.factory<_i231.SimilarBooksCubit>(
+      () => _i231.SimilarBooksCubit(gh<_i739.HomeRepo>()),
     );
     return this;
   }

@@ -17,8 +17,8 @@ class HomeRepoImpl extends HomeRepo {
         "/volumes",
         query: {"q": "programming", "sorting": "newest"},
       );
-      BookModel book = BookModel.fromJson(result.data);
-      return Right(book);
+      BookModel books = BookModel.fromJson(result.data);
+      return Right(books);
     } catch (e) {
       if (e is DioError) {
         return Left(ServerFailure.fromDioError(e));
@@ -35,8 +35,31 @@ class HomeRepoImpl extends HomeRepo {
         query: {"q": "programming", "Filtering": "free-ebooks"},
       );
 
-      BookModel book = BookModel.fromJson(result.data);
-      return Right(book);
+      BookModel books = BookModel.fromJson(result.data);
+      return Right(books);
+    } catch (e) {
+      if (e is DioError) {
+        return Left(ServerFailure.fromDioError(e));
+      }
+      return Left(ServerFailure("SomeThing Went Wrong ${e.toString()}"));
+    }
+  }
+
+  @override
+  Future<Either<Failures, BookModel>> fetchSimilarBooks({
+    required String category,
+  }) async {
+    try {
+      var result = await apiManager.getData(
+        "/volumes",
+        query: {
+          "sorting": "relevance",
+          "q": category,
+          "Filtering": "Free-ebooks",
+        },
+      );
+      BookModel books = BookModel.fromJson(result.data);
+      return Right(books);
     } catch (e) {
       if (e is DioError) {
         return Left(ServerFailure.fromDioError(e));
