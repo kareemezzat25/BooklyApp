@@ -1,8 +1,10 @@
 import 'package:bookly_app/core/resources/app_colors.dart';
+import 'package:bookly_app/features/home/models/price_book_model.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsButtons extends StatelessWidget {
-  const BookDetailsButtons({super.key});
+  final PriceBookModel? bookPrice;
+  const BookDetailsButtons({super.key, this.bookPrice});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,9 @@ class BookDetailsButtons extends StatelessWidget {
               ),
             ),
             child: Text(
-              "19.99\$",
+              bookPrice == null || bookPrice!.amount == 0
+                  ? "Free"
+                  : "${bookPrice?.amount ?? 0} ${bookPrice!.currencyCode}",
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontSize: 18,
                 color: AppColors.primary,

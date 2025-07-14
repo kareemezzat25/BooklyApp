@@ -1,8 +1,6 @@
 import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:bookly_app/features/home/data/home_repo.dart';
-import 'package:bookly_app/features/home/models/book_model.dart';
 import 'package:bookly_app/features/home/presentation/cubits/feature_books/feature_books_states.dart';
 import 'package:injectable/injectable.dart';
 

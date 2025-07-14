@@ -76,6 +76,7 @@ class BestSellerItemListView extends StatelessWidget {
                             "",
                       )
                     : null,
+                bookItems: state.bookModel?.items?[index],
               );
             },
             itemCount: state.bookModel?.totalItems ?? 0,

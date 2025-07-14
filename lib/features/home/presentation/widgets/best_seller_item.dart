@@ -1,3 +1,4 @@
+import 'package:bookly_app/features/home/models/book_model.dart';
 import 'package:bookly_app/features/home/models/book_rating_model.dart';
 import 'package:bookly_app/features/home/models/newest_book_model.dart';
 import 'package:bookly_app/features/home/models/price_book_model.dart';
@@ -11,18 +12,23 @@ class BestSellerItem extends StatelessWidget {
   final NewestBookModel? book;
   final BookRatingModel? bookRating;
   final PriceBookModel? bookPrice;
+  final Items? bookItems;
   const BestSellerItem({
     super.key,
     required this.book,
     this.bookRating,
     this.bookPrice,
+    this.bookItems,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => BookDetailsView(), transition: Transition.fade);
+        Get.to(
+          () => BookDetailsView(bookItems: bookItems),
+          transition: Transition.fade,
+        );
       },
       child: Row(
         children: [
