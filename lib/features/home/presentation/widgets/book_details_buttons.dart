@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 class BookDetailsButtons extends StatelessWidget {
   final PriceBookModel? bookPrice;
-  const BookDetailsButtons({super.key, this.bookPrice});
+  final void Function()? onPressed;
+  const BookDetailsButtons({super.key, this.bookPrice, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,6 @@ class BookDetailsButtons extends StatelessWidget {
       children: [
         Expanded(
           child: TextButton(
-            onPressed: () {},
             style: TextButton.styleFrom(
               minimumSize: Size(double.infinity, 48),
               backgroundColor: AppColors.secondary,
@@ -23,6 +23,7 @@ class BookDetailsButtons extends StatelessWidget {
                 ),
               ),
             ),
+            onPressed: () {},
             child: Text(
               bookPrice == null || bookPrice!.amount == 0
                   ? "Free"
@@ -36,7 +37,7 @@ class BookDetailsButtons extends StatelessWidget {
         ),
         Expanded(
           child: TextButton(
-            onPressed: () {},
+            onPressed: onPressed,
             style: TextButton.styleFrom(
               backgroundColor: AppColors.textButtonColor,
               minimumSize: Size(double.infinity, 48),

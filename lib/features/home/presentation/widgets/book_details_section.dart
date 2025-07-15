@@ -1,8 +1,11 @@
 import 'package:bookly_app/features/home/models/book_model.dart';
+import 'package:bookly_app/features/home/models/book_rating_model.dart';
 import 'package:bookly_app/features/home/models/price_book_model.dart';
 import 'package:bookly_app/features/home/presentation/widgets/book_details_buttons.dart';
 import 'package:bookly_app/features/home/presentation/widgets/book_image.dart';
+import 'package:bookly_app/features/home/presentation/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BookDetailsSection extends StatelessWidget {
   final Items bookItems;
@@ -30,7 +33,14 @@ class BookDetailsSection extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         SizedBox(height: 18),
-        // Center(child: BookRating()),
+        Center(
+          child: BookRating(
+            bookRating: BookRatingModel(
+              ratingAverage: bookItems.volumeInfo?.averageRating ?? 0,
+              ratingCount: bookItems.volumeInfo?.ratingsCount ?? 0,
+            ),
+          ),
+        ),
         SizedBox(height: 36),
         BookDetailsButtons(
           bookPrice: bookItems.saleInfo?.saleability != "FREE"
@@ -40,8 +50,32 @@ class BookDetailsSection extends StatelessWidget {
                       bookItems.saleInfo?.listPrice?.currencyCode ?? "",
                 )
               : null,
+          onPressed: () {
+            launchPreviewUrl(context, bookItems.volumeInfo?.previewLink);
+          },
         ),
       ],
+    );
+  }
+}
+
+Future<void> launchPreviewUrl(BuildContext context, String? previewUrl) async {
+  if (previewUrl != null) {
+    Uri url = Uri.parse(previewUrl);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw Exception('Could not launch $url');
+    }
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Could not launch the link',
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        backgroundColor: Colors.red,
+      ),
     );
   }
 }
